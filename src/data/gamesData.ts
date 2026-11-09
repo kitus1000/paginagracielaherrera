@@ -1,4 +1,4 @@
-import { DragMatchItem, SpeedSorterQuestion, StepPuzzleItem, BossLevel } from '../types';
+import { DragMatchItem, SpeedSorterQuestion, StepPuzzleItem, BossLevel, SpaceDefenderQuestion } from '../types';
 
 // ==========================================
 // JUEGO 1: CAZA-PRIMITIVAS DRAG & MATCH
@@ -451,5 +451,218 @@ export const BOSS_LEVELS: BossLevel[] = [
         xp: 110
       }
     ]
+  }
+];
+
+// ==========================================
+// JUEGO 5: INVASORES DEL CÁLCULO (SPACE ARCADE)
+// ==========================================
+export const SPACE_DEFENDER_QUESTIONS: SpaceDefenderQuestion[] = [
+  // --- OLEADA 1: CERO GRAVEDAD (POLINOMIALES E INMEDIATAS) ---
+  {
+    id: 'sd-1',
+    wave: 1,
+    waveTitle: 'Oleada 1: Cero Gravedad (Inmediatas)',
+    integralLatex: '\\int 6x^5 \\, dx',
+    options: ['x^6 + C', '30x^4 + C', '\\frac{6}{5}x^6 + C', '6x^6 + C'],
+    correctIndex: 0,
+    explanation: 'Regla de la potencia: 6 * (x^6 / 6) = x^6 + C.',
+    points: 100
+  },
+  {
+    id: 'sd-2',
+    wave: 1,
+    waveTitle: 'Oleada 1: Cero Gravedad (Inmediatas)',
+    integralLatex: '\\int 4x^3 \\, dx',
+    options: ['x^4 + C', '12x^2 + C', '4x^4 + C', '\\frac{4}{3}x^4 + C'],
+    correctIndex: 0,
+    explanation: 'Regla de la potencia: 4 * (x^4 / 4) = x^4 + C.',
+    points: 100
+  },
+  {
+    id: 'sd-3',
+    wave: 1,
+    waveTitle: 'Oleada 1: Cero Gravedad (Inmediatas)',
+    integralLatex: '\\int (3x^2 - 2x + 5) \\, dx',
+    options: ['x^3 - x^2 + 5x + C', '6x - 2 + C', '3x^3 - 2x^2 + 5x + C', 'x^3 - 2x^2 + C'],
+    correctIndex: 0,
+    explanation: 'Integración término a término: x³ - x² + 5x + C.',
+    points: 120
+  },
+  {
+    id: 'sd-4',
+    wave: 1,
+    waveTitle: 'Oleada 1: Cero Gravedad (Inmediatas)',
+    integralLatex: '\\int \\frac{3}{\\sqrt{x}} \\, dx',
+    options: ['6\\sqrt{x} + C', '3\\sqrt{x} + C', '\\frac{3}{2\\sqrt{x}} + C', '\\frac{2}{3}x^{3/2} + C'],
+    correctIndex: 0,
+    explanation: 'x^(-1/2) se integra a 2x^(1/2). Multiplicado por 3 da 6√x + C.',
+    points: 130
+  },
+  {
+    id: 'sd-5',
+    wave: 1,
+    waveTitle: 'Oleada 1: Cero Gravedad (Inmediatas)',
+    integralLatex: '\\int 7 \\, dx',
+    options: ['7x + C', '0 + C', '7x^2 + C', '\\frac{7}{2}x + C'],
+    correctIndex: 0,
+    explanation: 'La integral de una constante k es kx + C.',
+    points: 100
+  },
+
+  // --- OLEADA 2: NEBULOSA TRIGONOMÉTRICA ---
+  {
+    id: 'sd-6',
+    wave: 2,
+    waveTitle: 'Oleada 2: Nebulosa Trigonométrica',
+    integralLatex: '\\int \\cos(4x) \\, dx',
+    options: ['\\frac{1}{4}\\sin(4x) + C', '-\\frac{1}{4}\\sin(4x) + C', '4\\sin(4x) + C', '-\\sin(4x) + C'],
+    correctIndex: 0,
+    explanation: 'Sustitución lineal u = 4x, du = 4 dx => (1/4) sin(4x) + C.',
+    points: 150
+  },
+  {
+    id: 'sd-7',
+    wave: 2,
+    waveTitle: 'Oleada 2: Nebulosa Trigonométrica',
+    integralLatex: '\\int \\sin(3x) \\, dx',
+    options: ['-\\frac{1}{3}\\cos(3x) + C', '\\frac{1}{3}\\cos(3x) + C', '-3\\cos(3x) + C', '\\cos(3x) + C'],
+    correctIndex: 0,
+    explanation: 'La antiderivada de sin(kx) es -(1/k) cos(kx) + C.',
+    points: 150
+  },
+  {
+    id: 'sd-8',
+    wave: 2,
+    waveTitle: 'Oleada 2: Nebulosa Trigonométrica',
+    integralLatex: '\\int \\sec^2(2x) \\, dx',
+    options: ['\\frac{1}{2}\\tan(2x) + C', '2\\tan(2x) + C', '-\\frac{1}{2}\\tan(2x) + C', '\\tan(2x) + C'],
+    correctIndex: 0,
+    explanation: 'La derivada de la tangente es sec² => (1/2) tan(2x) + C.',
+    points: 160
+  },
+  {
+    id: 'sd-9',
+    wave: 2,
+    waveTitle: 'Oleada 2: Nebulosa Trigonométrica',
+    integralLatex: '\\int \\sec(x)\\tan(x) \\, dx',
+    options: ['\\sec(x) + C', '\\tan(x) + C', '-\\sec(x) + C', '\\cos(x) + C'],
+    correctIndex: 0,
+    explanation: 'Fórmula fundamental: d/dx[sec(x)] = sec(x) tan(x).',
+    points: 160
+  },
+  {
+    id: 'sd-10',
+    wave: 2,
+    waveTitle: 'Oleada 2: Nebulosa Trigonométrica',
+    integralLatex: '\\int 2x \\cos(x^2) \\, dx',
+    options: ['\\sin(x^2) + C', '-\\sin(x^2) + C', 'x^2\\sin(x^2) + C', '2\\sin(x^2) + C'],
+    correctIndex: 0,
+    explanation: 'Cambio de variable: u = x², du = 2x dx => ∫ cos(u) du = sin(x²) + C.',
+    points: 180
+  },
+
+  // --- OLEADA 3: AGUJERO NEGRO EXPONENCIAL & RACIONAL ---
+  {
+    id: 'sd-11',
+    wave: 3,
+    waveTitle: 'Oleada 3: Agujero Negro Exponencial',
+    integralLatex: '\\int e^{5x} \\, dx',
+    options: ['\\frac{1}{5}e^{5x} + C', '5e^{5x} + C', 'e^{5x} + C', '\\frac{1}{5}e^x + C'],
+    correctIndex: 0,
+    explanation: 'Antiderivada exponencial inmediata: (1/k) e^(kx) + C.',
+    points: 200
+  },
+  {
+    id: 'sd-12',
+    wave: 3,
+    waveTitle: 'Oleada 3: Agujero Negro Exponencial',
+    integralLatex: '\\int \\frac{1}{x + 4} \\, dx',
+    options: ['\\ln|x + 4| + C', '\\frac{1}{(x + 4)^2} + C', '-\\frac{1}{x + 4} + C', '\\ln(4x) + C'],
+    correctIndex: 0,
+    explanation: 'Forma logarítmica canónica ∫ du / u = ln|u| + C.',
+    points: 200
+  },
+  {
+    id: 'sd-13',
+    wave: 3,
+    waveTitle: 'Oleada 3: Agujero Negro Exponencial',
+    integralLatex: '\\int \\frac{2x}{x^2 + 1} \\, dx',
+    options: ['\\ln(x^2 + 1) + C', '2\\arctan(x) + C', '\\frac{1}{x^2 + 1} + C', '\\ln|2x| + C'],
+    correctIndex: 0,
+    explanation: 'u = x² + 1, du = 2x dx => ∫ du / u = ln(x² + 1) + C.',
+    points: 220
+  },
+  {
+    id: 'sd-14',
+    wave: 3,
+    waveTitle: 'Oleada 3: Agujero Negro Exponencial',
+    integralLatex: '\\int \\frac{1}{1 + x^2} \\, dx',
+    options: ['\\arctan(x) + C', '\\arcsin(x) + C', '\\ln(1 + x^2) + C', '\\tan(x) + C'],
+    correctIndex: 0,
+    explanation: 'Derivada directa de la función arco tangente.',
+    points: 220
+  },
+  {
+    id: 'sd-15',
+    wave: 3,
+    waveTitle: 'Oleada 3: Agujero Negro Exponencial',
+    integralLatex: '\\int \\frac{1}{\\sqrt{1 - x^2}} \\, dx',
+    options: ['\\arcsin(x) + C', '\\arccos(x) + C', '\\arctan(x) + C', '\\ln|1 - x^2| + C'],
+    correctIndex: 0,
+    explanation: 'Derivada inmediata de la función arco seno.',
+    points: 220
+  },
+
+  // --- OLEADA 4: NÚCLEO CUÁNTICO (POR PARTES & AVANZADAS) ---
+  {
+    id: 'sd-16',
+    wave: 4,
+    waveTitle: 'Oleada 4: Núcleo Cuántico (Por Partes)',
+    integralLatex: '\\int x e^x \\, dx',
+    options: ['e^x(x - 1) + C', 'e^x(x + 1) + C', 'x^2 e^x + C', '\\frac{1}{2}x^2 e^x + C'],
+    correctIndex: 0,
+    explanation: 'Por partes: u = x, dv = e^x dx => x e^x - ∫ e^x dx = e^x(x - 1) + C.',
+    points: 260
+  },
+  {
+    id: 'sd-17',
+    wave: 4,
+    waveTitle: 'Oleada 4: Núcleo Cuántico (Por Partes)',
+    integralLatex: '\\int \\ln(x) \\, dx',
+    options: ['x\\ln(x) - x + C', '\\frac{1}{x} + C', 'x\\ln(x) + C', '\\frac{(\\ln x)^2}{2} + C'],
+    correctIndex: 0,
+    explanation: 'Por partes: u = ln(x), dv = dx => x ln(x) - ∫ x(1/x) dx = x ln(x) - x + C.',
+    points: 260
+  },
+  {
+    id: 'sd-18',
+    wave: 4,
+    waveTitle: 'Oleada 4: Núcleo Cuántico (Por Partes)',
+    integralLatex: '\\int x \\cos(x) \\, dx',
+    options: ['x\\sin(x) + \\cos(x) + C', 'x\\sin(x) - \\cos(x) + C', '-x\\sin(x) + C', '\\frac{1}{2}x^2\\sin(x) + C'],
+    correctIndex: 0,
+    explanation: 'Por partes: u = x, dv = cos(x) dx => x sin(x) - ∫ sin(x) dx = x sin(x) + cos(x) + C.',
+    points: 280
+  },
+  {
+    id: 'sd-19',
+    wave: 4,
+    waveTitle: 'Oleada 4: Núcleo Cuántico (Por Partes)',
+    integralLatex: '\\int \\frac{1}{x^2 + 9} \\, dx',
+    options: ['\\frac{1}{3}\\arctan\\left(\\frac{x}{3}\\right) + C', '\\arctan\\left(\\frac{x}{3}\\right) + C', '\\frac{1}{9}\\arctan(x) + C', '\\ln|x^2 + 9| + C'],
+    correctIndex: 0,
+    explanation: 'Forma canónica ∫ dx / (x² + a²) con a = 3 => (1/3) arctan(x/3) + C.',
+    points: 280
+  },
+  {
+    id: 'sd-20',
+    wave: 4,
+    waveTitle: 'Oleada 4: Núcleo Cuántico (Por Partes)',
+    integralLatex: '\\int x \\sqrt{x^2 + 1} \\, dx',
+    options: ['\\frac{1}{3}(x^2 + 1)^{3/2} + C', '\\frac{2}{3}(x^2 + 1)^{3/2} + C', '(x^2 + 1)^{3/2} + C', '\\frac{1}{2}(x^2 + 1)^2 + C'],
+    correctIndex: 0,
+    explanation: 'u = x² + 1, du = 2x dx => (1/2) * (2/3) u^(3/2) = (1/3)(x² + 1)^(3/2) + C.',
+    points: 300
   }
 ];

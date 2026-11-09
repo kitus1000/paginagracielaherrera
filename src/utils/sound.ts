@@ -119,6 +119,93 @@ class SoundSystem {
     osc.stop(now + 0.2);
   }
 
+  playLaser() {
+    const ctx = this.getContext();
+    if (!ctx) return;
+    const now = ctx.currentTime;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(1400, now);
+    osc.frequency.exponentialRampToValueAtTime(180, now + 0.15);
+    gain.gain.setValueAtTime(0.18, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.15);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start(now);
+    osc.stop(now + 0.15);
+  }
+
+  playExplosion() {
+    const ctx = this.getContext();
+    if (!ctx) return;
+    const now = ctx.currentTime;
+    // Low frequency burst with noise simulation
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'triangle';
+    osc.frequency.setValueAtTime(120, now);
+    osc.frequency.exponentialRampToValueAtTime(30, now + 0.35);
+    gain.gain.setValueAtTime(0.3, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start(now);
+    osc.stop(now + 0.35);
+  }
+
+  playCombo() {
+    const ctx = this.getContext();
+    if (!ctx) return;
+    const now = ctx.currentTime;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(1046.5, now); // C6
+    osc.frequency.exponentialRampToValueAtTime(1567.98, now + 0.12); // G6
+    gain.gain.setValueAtTime(0.2, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start(now);
+    osc.stop(now + 0.18);
+  }
+
+  playRocket() {
+    const ctx = this.getContext();
+    if (!ctx) return;
+    const now = ctx.currentTime;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(65, now);
+    osc.frequency.linearRampToValueAtTime(95, now + 0.2);
+    gain.gain.setValueAtTime(0.08, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start(now);
+    osc.stop(now + 0.2);
+  }
+
+  playSplash() {
+    const ctx = this.getContext();
+    if (!ctx) return;
+    const now = ctx.currentTime;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(350, now);
+    osc.frequency.exponentialRampToValueAtTime(600, now + 0.08);
+    osc.frequency.exponentialRampToValueAtTime(200, now + 0.2);
+    gain.gain.setValueAtTime(0.12, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start(now);
+    osc.stop(now + 0.2);
+  }
+
   toggleSound(): boolean {
     this.enabled = !this.enabled;
     return this.enabled;

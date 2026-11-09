@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { sound } from '../utils/sound';
+import { SpaceDefendersGame } from '../components/SpaceDefendersGame';
 
 interface GamesViewProps {
   xp: number;
@@ -28,7 +29,7 @@ interface GamesViewProps {
 }
 
 export const GamesView: React.FC<GamesViewProps> = ({ setXp, lives, setLives }) => {
-  const [selectedGame, setSelectedGame] = useState<1 | 2 | 3 | 4>(1);
+  const [selectedGame, setSelectedGame] = useState<1 | 2 | 3 | 4 | 5>(1);
 
   // ==========================================
   // JUEGO 1: DRAG & MATCH STATE
@@ -292,7 +293,7 @@ export const GamesView: React.FC<GamesViewProps> = ({ setXp, lives, setLives }) 
               <span>Zona de Gamificación Académica</span>
             </div>
             <h1 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
-              4 Juegos Interactivos de Cálculo
+              5 Juegos Interactivos de Cálculo
             </h1>
           </div>
 
@@ -316,26 +317,27 @@ export const GamesView: React.FC<GamesViewProps> = ({ setXp, lives, setLives }) 
           </div>
         </div>
 
-        {/* 4 Games Selector Tabs */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        {/* 5 Games Selector Tabs */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
           {[
             { id: 1, title: '1. Caza-Primitivas', sub: 'Drag & Drop de Respuestas', icon: '🎯' },
             { id: 2, title: '2. Reactor de Métodos', sub: 'Clasificador a Contrarreloj', icon: '⚡' },
             { id: 3, title: '3. Rompecabezas', sub: 'Ordenamiento de Pasos', icon: '🧩' },
-            { id: 4, title: '4. Batalla Riemann', sub: 'Aventura contra 4 Jefes', icon: '⚔️' }
+            { id: 4, title: '4. Batalla Riemann', sub: 'Aventura contra 4 Jefes', icon: '⚔️' },
+            { id: 5, title: '5. Invasores Arcade', sub: 'Defensa con Teclas 1-4', icon: '🛸' }
           ].map((g) => (
             <button
               key={g.id}
               onClick={() => { sound.playClick(); setSelectedGame(g.id as any); }}
               className={`p-4 rounded-2xl border text-left transition-all ${
                 selectedGame === g.id
-                  ? 'bg-indigo-600 text-white border-indigo-600 shadow-xl scale-[1.02]'
+                  ? 'bg-gradient-to-br from-indigo-600 to-cyan-600 text-white border-transparent shadow-xl scale-[1.02]'
                   : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-slate-300'
               }`}
             >
               <span className="text-2xl mb-1 block">{g.icon}</span>
               <span className="font-black text-sm block">{g.title}</span>
-              <span className={`text-[11px] block ${selectedGame === g.id ? 'text-indigo-200' : 'text-slate-400'}`}>
+              <span className={`text-[11px] block ${selectedGame === g.id ? 'text-indigo-100' : 'text-slate-400'}`}>
                 {g.sub}
               </span>
             </button>
@@ -901,6 +903,13 @@ export const GamesView: React.FC<GamesViewProps> = ({ setXp, lives, setLives }) 
           )}
 
         </div>
+      )}
+
+      {/* ========================================================
+          JUEGO 5: INVASORES DEL CÁLCULO (SPACE ARCADE)
+         ======================================================== */}
+      {selectedGame === 5 && (
+        <SpaceDefendersGame setXp={setXp} />
       )}
 
     </div>

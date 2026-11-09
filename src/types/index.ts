@@ -98,3 +98,14 @@ export interface BossLevel {
   dialogue: string;
   questions: BossQuestion[];
 }
+
+export interface SpaceDefenderQuestion {
+  id: string;
+  wave: number;
+  waveTitle: string;
+  integralLatex: string;
+  options: string[];
+  correctIndex: number;
+  explanation: string;
+  points: number;
+}

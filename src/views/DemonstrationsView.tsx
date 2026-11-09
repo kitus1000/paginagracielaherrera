@@ -12,13 +12,14 @@ import {
   Info
 } from 'lucide-react';
 import { sound } from '../utils/sound';
+import { RealWorldDemonstrations } from '../components/RealWorldDemonstrations';
 
 interface DemonstrationsViewProps {
   setXp: (val: number | ((prev: number) => number)) => void;
 }
 
 export const DemonstrationsView: React.FC<DemonstrationsViewProps> = ({ setXp }) => {
-  const [activeSimulator, setActiveSimulator] = useState<'riemann' | 'solids' | 'tfc'>('riemann');
+  const [activeSimulator, setActiveSimulator] = useState<'riemann' | 'solids' | 'tfc' | 'realworld'>('riemann');
 
   // ==========================================
   // RIEMANN SIMULATOR STATE
@@ -471,6 +472,17 @@ export const DemonstrationsView: React.FC<DemonstrationsViewProps> = ({ setXp })
           >
             3. Acumulación TFC: g'(x) = f(x)
           </button>
+
+          <button
+            onClick={() => { sound.playClick(); setActiveSimulator('realworld'); }}
+            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all ${
+              activeSimulator === 'realworld'
+                ? 'bg-gradient-to-r from-orange-600 to-amber-600 text-white shadow-md'
+                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+            }`}
+          >
+            4. 🔬 Vida Real (Física e Ingeniería)
+          </button>
         </div>
       </div>
 
@@ -822,6 +834,13 @@ export const DemonstrationsView: React.FC<DemonstrationsViewProps> = ({ setXp })
           </div>
 
         </div>
+      )}
+
+      {/* ========================================================
+          SIMULATOR 4: APLICACIONES EN LA VIDA REAL (FÍSICA & ING.)
+         ======================================================== */}
+      {activeSimulator === 'realworld' && (
+        <RealWorldDemonstrations setXp={setXp} />
       )}
 
     </div>
